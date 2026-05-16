@@ -18,17 +18,20 @@ Express + Paseto + Zod + Helmet starter. Auto route loading, auth, validation, s
 ## Quick Start
 
 ```bash
-# 1. Install
+# 1. Clone & install
 npm install
 
-# 2. Generate Paseto key pair
+# 2. Copy env file
+cp .env.example .env.development
+
+# 3. Generate Paseto key pair
 npm run generate:key
 
-# 3. Copy keys to .env.development
-#    (edit ACCESS_TOKEN_SECRET, ACCESS_TOKEN_PUBLIC,
+# 4. Paste the keys into .env.development
+#    (ACCESS_TOKEN_SECRET, ACCESS_TOKEN_PUBLIC,
 #     REFRESH_TOKEN_SECRET, REFRESH_TOKEN_PUBLIC)
 
-# 4. Start dev server
+# 5. Start dev server
 npm run dev
 ```
 
@@ -48,13 +51,26 @@ Server runs at `http://localhost:3306`.
 
 ## Environment
 
-Copy `.env.example` to `.env.development`. Required vars:
+Copy `.env.example` to `.env.development`:
+
+```bash
+cp .env.example .env.development
+```
+
+`.env.development` is gitignored — safe for local secrets.
+If already tracked, remove from git:
+
+```bash
+git rm --cached .env.development
+```
+
+Required vars (from `npm run generate:key`):
 
 ```
-ACCESS_TOKEN_SECRET=     # from npm run generate:key
-ACCESS_TOKEN_PUBLIC=     # from npm run generate:key
-REFRESH_TOKEN_SECRET=    # from npm run generate:key
-REFRESH_TOKEN_PUBLIC=    # from npm run generate:key
+ACCESS_TOKEN_SECRET=
+ACCESS_TOKEN_PUBLIC=
+REFRESH_TOKEN_SECRET=
+REFRESH_TOKEN_PUBLIC=
 ```
 
 ## Routes
